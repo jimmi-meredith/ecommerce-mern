@@ -4,7 +4,10 @@
   "description": "Basic E-Commerce site using the MERN stack",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon back-end/server"
+    "start": "node back-end/server",
+    "server": "nodemon back-end/server",
+    "client": "npm start --prefix front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
@@ -20,6 +23,7 @@
     "express": "^4.17.1"
   },
   "devDependencies": {
+    "concurrently": "^5.3.0",
     "nodemon": "^2.0.7"
   }
 }
