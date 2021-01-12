@@ -43,3 +43,5 @@ const deleteData = () => {
     process.exit(1)
   }
 }
+
+procces.argv[2] === '-d' ? deleteData() : importData()
