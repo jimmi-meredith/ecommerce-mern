@@ -10,13 +10,22 @@ connectDB()
 
 const app = express()
 
+const PORT = process.env.PORT || 4000
+
 app.get('/', (req, res) => {
   res.send('API is Running...')
 })
 
 app.use('/api/products', productRoutes)
 
-const PORT = process.env.PORT || 4000
+app.use((err, req, res, next) => {
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode
+  res.status(statusCode)
+  res.json({
+    message: err.message,
+    stack: process.env.NODE_ENV === 'production' ? null : err.stack,
+  })
+})
 
 app.listen(
   PORT,
