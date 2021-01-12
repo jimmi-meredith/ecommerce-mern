@@ -4,6 +4,7 @@ import Product from '../models/productModel'
 
 const router = express.Router()
 
+// GET - /api/products
 router.get(
   '/',
   asyncHandler(async (req, res) => {
@@ -12,6 +13,7 @@ router.get(
   })
 )
 
+// GET - /api/products/:id
 router.get(
   '/:id',
   asyncHandler(async (req, res) => {
