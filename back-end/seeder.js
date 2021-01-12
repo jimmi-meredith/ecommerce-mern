@@ -30,3 +30,16 @@ const importData = () => {
     process.exit(1)
   }
 }
+
+const deleteData = () => {
+  try {
+    await User.deleteMany()
+    await Product.deleteMany()
+    await Order.deleteMany()
+    console.log('Data Deleted!'.red.inverse)
+    process.exit()
+  } catch (error) {
+    console.error(`${error}`.red.inverse)
+    process.exit(1)
+  }
+}
