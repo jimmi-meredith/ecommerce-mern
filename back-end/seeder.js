@@ -12,15 +12,15 @@ dotenv.config()
 
 connectDB()
 
-const importData = () => {
+const importData = async () => {
   try {
     await User.deleteMany()
     await Product.deleteMany()
     await Order.deleteMany()
     const createdUsers = await User.insertMany(users)
     const adminUser = createdUsers[0]._id
-    const sampleProducts = products.map(product => {
-      return {...product, user: adminUser}
+    const sampleProducts = products.map((product) => {
+      return { ...product, user: adminUser }
     })
     await Product.insertMany(sampleProducts)
     console.log('Data Imported!'.green.inverse)
@@ -31,7 +31,7 @@ const importData = () => {
   }
 }
 
-const deleteData = () => {
+const deleteData = async () => {
   try {
     await User.deleteMany()
     await Product.deleteMany()
