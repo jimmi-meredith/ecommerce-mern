@@ -17,11 +17,11 @@ app.get('/', (req, res) => {
   res.send('API is Running...')
 })
 
+app.use('/api/products', productRoutes)
+
 app.use(notFound)
 
 app.use(errorHandler)
-
-app.use('/api/products', productRoutes)
 
 app.listen(
   PORT,
