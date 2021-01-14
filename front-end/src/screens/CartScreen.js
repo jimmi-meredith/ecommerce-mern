@@ -22,6 +22,10 @@ const CartScreen = ({ match, location, history }) => {
     console.log('Removed Item')
   }
 
+  const checkoutHandler = () => {
+    history.push('/login?redirect=shipping')
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -86,6 +90,16 @@ const CartScreen = ({ match, location, history }) => {
               {cartItems
                 .reduce((acc, item) => acc + item.quantity * item.price, 0)
                 .toFixed(2)}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type='button'
+                className='btn-block'
+                disabled={cartItems.length === 0}
+                onClick={checkoutHandler}
+              >
+                Proceed to Checkout
+              </Button>
             </ListGroup.Item>
           </ListGroup>
         </Card>
