@@ -18,6 +18,10 @@ const CartScreen = ({ match, location, history }) => {
     }
   }, [dispatch, productId, quantity])
 
+  const removeFromCartHandler = (id) => {
+    console.log('Removed Item')
+  }
+
   return (
     <Row>
       <Col md={8}>
@@ -71,8 +75,6 @@ const CartScreen = ({ match, location, history }) => {
           </ListGroup>
         )}
       </Col>
-      <Col md={2}></Col>
-      <Col md={2}></Col>
     </Row>
   )
 }
