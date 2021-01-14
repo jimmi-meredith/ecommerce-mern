@@ -43,15 +43,14 @@ const CartScreen = ({ match, location, history }) => {
                   </Col>
                   <Col md={2}>${item.price}</Col>
                   <Col md={2}>
-                    {' '}
                     <Form.Control
                       as='select'
-                      value={quantity}
-                      onChange={(event) => {
+                      value={item.quantity}
+                      onChange={(event) =>
                         dispatch(
                           addToCart(item.product, Number(event.target.value))
                         )
-                      }}
+                      }
                     >
                       {[...Array(item.countInStock).keys()].map((key) => (
                         <option key={key + 1} value={key + 1}>
@@ -63,7 +62,7 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={2}>
                     <Button
                       type='button'
-                      variant='light'
+                      variant='dark'
                       onClick={() => removeFromCartHandler(item.product)}
                     >
                       <i className='fas fa-trash'></i>
@@ -74,6 +73,22 @@ const CartScreen = ({ match, location, history }) => {
             ))}
           </ListGroup>
         )}
+      </Col>
+      <Col md={4}>
+        <Card>
+          <ListGroup variant='flush'>
+            <ListGroup.Item>
+              <h2>
+                Subtotal (
+                {cartItems.reduce((acc, item) => acc + item.quantity, 0)}) items
+              </h2>
+              $
+              {cartItems
+                .reduce((acc, item) => acc + item.quantity * item.price, 0)
+                .toFixed(2)}
+            </ListGroup.Item>
+          </ListGroup>
+        </Card>
       </Col>
     </Row>
   )
