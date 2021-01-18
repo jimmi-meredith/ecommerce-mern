@@ -9,8 +9,11 @@ import { listProductDetails } from '../actions/productActions'
 
 const ProductScreen = ({ match, history }) => {
   const [quantity, setQuantity] = useState(1)
+
   const dispatch = useDispatch()
+
   const productDetails = useSelector((state) => state.productDetails)
+
   const { loading, error, product } = productDetails
 
   useEffect(() => {

@@ -8,8 +8,11 @@ import { addToCart, removeFromCart } from '../actions/cartActions'
 const CartScreen = ({ match, location, history }) => {
   const productId = match.params.id
   const quantity = location.search ? Number(location.search.split('=')[1]) : 1
+
   const dispatch = useDispatch()
+
   const cart = useSelector((state) => state.cart)
+
   const { cartItems } = cart
 
   useEffect(() => {
