@@ -18,4 +18,9 @@ const authUser = asyncHandler(async (req, res) => {
   throw new Error('Invalid email or password')
 })
 
-export { authUser }
+// GET - /api/users/profile
+const getUserProfile = asyncHandler(async (req, res) => {
+  res.send('Success')
+})
+
+export { authUser, getUserProfile }
