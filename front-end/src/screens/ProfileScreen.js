@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
@@ -15,8 +14,8 @@ const ProfileScreen = ({ location, history }) => {
 
   const dispatch = useDispatch()
 
-  const userDetails = useSelector((state) => state.userRegister)
-  const userLogin = useSelector((state) => state.userRegister)
+  const userDetails = useSelector((state) => state.userDetails)
+  const userLogin = useSelector((state) => state.userLogin)
 
   const { loading, error, user } = userDetails
   const { userInfo } = userLogin
@@ -32,7 +31,7 @@ const ProfileScreen = ({ location, history }) => {
         setEmail(user.email)
       }
     }
-  }, [dispatch, history, userInfo])
+  }, [dispatch, history, userInfo, user])
 
   const submitHandler = (event) => {
     event.preventDefault()

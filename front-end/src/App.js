@@ -5,9 +5,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import LoginScreen from './screens/LoginScreen'
 import RegisterScreen from './screens/RegisterScreen'
+import ProfileScreen from './screens/ProfileScreen'
 import ProductScreen from './screens/ProductScreen'
 import CartScreen from './screens/CartScreen'
-import ProfileScreen from './screens/ProfileScreen'
 import HomeScreen from './screens/HomeScreen'
 
 const App = () => {
