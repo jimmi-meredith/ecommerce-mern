@@ -7,11 +7,11 @@ import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
 
 const Homescreen = () => {
-  const dispatch = useDispatch()
-
   const productList = useSelector((state) => state.productList)
 
   const { loading, error, products } = productList
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(listProducts())

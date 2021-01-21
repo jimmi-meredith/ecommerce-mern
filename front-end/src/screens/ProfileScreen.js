@@ -7,14 +7,6 @@ import { getUserDetails, updateUserProfile } from '../actions/userActions'
 import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants'
 
 const ProfileScreen = ({ history }) => {
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmPassword, setConfirmPassword] = useState('')
-  const [message, setMessage] = useState(null)
-
-  const dispatch = useDispatch()
-
   const userDetails = useSelector((state) => state.userDetails)
   const userLogin = useSelector((state) => state.userLogin)
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile)
@@ -22,6 +14,14 @@ const ProfileScreen = ({ history }) => {
   const { loading, error, user } = userDetails
   const { userInfo } = userLogin
   const { success } = userUpdateProfile
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [message, setMessage] = useState(null)
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (!userInfo) {

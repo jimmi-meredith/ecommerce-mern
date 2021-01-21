@@ -8,6 +8,10 @@ import FormContainer from '../components/FormContainer'
 import { register } from '../actions/userActions'
 
 const RegisterScreen = ({ location, history }) => {
+  const userRegister = useSelector((state) => state.userRegister)
+
+  const { loading, error, userInfo } = userRegister
+
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -15,10 +19,6 @@ const RegisterScreen = ({ location, history }) => {
   const [message, setMessage] = useState(null)
 
   const dispatch = useDispatch()
-
-  const userRegister = useSelector((state) => state.userRegister)
-
-  const { loading, error, userInfo } = userRegister
 
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
