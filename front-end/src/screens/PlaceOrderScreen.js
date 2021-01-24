@@ -8,6 +8,10 @@ import CheckoutSteps from '../components/CheckoutSteps'
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart)
 
+  const addDecimals = (number) => {
+    return (Math.round(number * 100) / 100).toFixed(2)
+  }
+
   cart.itemsPrice = cart.cartItems.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
