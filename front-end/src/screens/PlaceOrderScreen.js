@@ -7,6 +7,11 @@ import CheckoutSteps from '../components/CheckoutSteps'
 
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart)
+
+  const placeOrderHandler = () => {
+    console.log('Place Order')
+  }
+
   return (
     <div>
       <CheckoutSteps step1 step2 step3 step4 />
