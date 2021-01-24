@@ -8,6 +8,11 @@ import CheckoutSteps from '../components/CheckoutSteps'
 const PlaceOrderScreen = () => {
   const cart = useSelector((state) => state.cart)
 
+  cart.itemsPrice = cart.cartItems.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  )
+
   const placeOrderHandler = () => {
     console.log('Place Order')
   }
