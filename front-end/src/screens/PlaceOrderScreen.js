@@ -12,6 +12,8 @@ const PlaceOrderScreen = () => {
     (acc, item) => acc + item.price * item.quantity,
     0
   )
+  cart.shippingPrice = cart.itemsPrice > 100 ? 0 : 10
+  cart.taxPrice = Number((0.15 * cart.itemsPrice).toFixed(2))
 
   const placeOrderHandler = () => {
     console.log('Place Order')
