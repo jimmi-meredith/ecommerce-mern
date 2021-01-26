@@ -32,8 +32,8 @@ const PlaceOrderScreen = ({ history }) => {
   cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 10)
   cart.totalPrice = (
     Number(cart.itemsPrice) +
-    Number(cart.shippingPrice) +
-    Number(cart.taxPrice)
+    Number(cart.taxPrice) +
+    Number(cart.shippingPrice)
   ).toFixed(2)
 
   const placeOrderHandler = () => {
