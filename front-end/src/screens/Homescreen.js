@@ -18,7 +18,7 @@ const Homescreen = () => {
   }, [dispatch])
 
   return (
-    <div>
+    <>
       <h1>Latest Products</h1>
       {loading ? (
         <Loader />
@@ -33,7 +33,7 @@ const Homescreen = () => {
           ))}
         </Row>
       )}
-    </div>
+    </>
   )
 }
 
