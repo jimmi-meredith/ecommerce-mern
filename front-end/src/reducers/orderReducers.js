@@ -39,7 +39,10 @@ export const orderDetailsReducer = (
 ) => {
   switch (action.type) {
     case ORDER_DETAILS_REQUEST:
-      return { ...state, loading: true }
+      return {
+        ...state,
+        loading: true,
+      }
     case ORDER_DETAILS_SUCCESS:
       return {
         loading: false,
@@ -58,7 +61,9 @@ export const orderDetailsReducer = (
 export const orderPayReducer = (state = {}, action) => {
   switch (action.type) {
     case ORDER_PAY_REQUEST:
-      return { loading: true }
+      return {
+        loading: true,
+      }
     case ORDER_PAY_SUCCESS:
       return {
         loading: false,
