@@ -139,7 +139,9 @@ const ProfileScreen = ({ history }) => {
                   </td>
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button variant='dark'>Details</Button>
+                      <Button variant='dark' className='btn-sm'>
+                        Details
+                      </Button>
                     </LinkContainer>
                   </td>
                 </tr>
