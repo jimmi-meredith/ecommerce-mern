@@ -12,13 +12,6 @@ const PlaceOrderScreen = ({ history }) => {
 
   const { order, success, error } = orderCreate
 
-  useEffect(() => {
-    if (success) {
-      history.push(`/order/${order._id}`)
-    }
-    // eslint-disable-next-line
-  }, [history, success])
-
   const dispatch = useDispatch()
 
   const addDecimals = (number) => {
@@ -35,6 +28,13 @@ const PlaceOrderScreen = ({ history }) => {
     Number(cart.taxPrice) +
     Number(cart.shippingPrice)
   ).toFixed(2)
+
+  useEffect(() => {
+    if (success) {
+      history.push(`/order/${order._id}`)
+    }
+    // eslint-disable-next-line
+  }, [history, success])
 
   const placeOrderHandler = () => {
     dispatch(
