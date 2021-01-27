@@ -88,7 +88,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 // GET - /api/users/
 const getUsers = asyncHandler(async (req, res) => {
-  const user = await User.find({})
+  const users = await User.find({})
   res.json(users)
 })
 
