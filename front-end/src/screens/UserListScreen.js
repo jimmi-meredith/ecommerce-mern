@@ -4,14 +4,16 @@ import { LinkContainer } from 'react-router-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
-import { listUsers } from '../actions/userActions'
+import { deleteUser, listUsers } from '../actions/userActions'
 
 const UserListScreen = ({ history }) => {
   const userList = useSelector((state) => state.userList)
   const userLogin = useSelector((state) => state.userLogin)
+  const userDelete = useSelector((state) => state.userDelete)
 
   const { loading, error, users } = userList
   const { userInfo } = userLogin
+  const { success: successDelete } = userDelete
 
   const dispatch = useDispatch()
 
@@ -21,10 +23,12 @@ const UserListScreen = ({ history }) => {
     } else {
       history.push('/login')
     }
-  }, [dispatch, userInfo, history])
+  }, [dispatch, userInfo, history, successDelete])
 
   const deleteHandler = (id) => {
-    console.log('Delete User')
+    if (window.confirm('Are you sure?')) {
+      dispatch(deleteUser(id))
+    }
   }
 
   return (
