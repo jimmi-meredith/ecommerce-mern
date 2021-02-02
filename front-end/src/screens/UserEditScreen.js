@@ -5,14 +5,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../components/Loader'
 import Message from '../components/Message'
 import FormContainer from '../components/FormContainer'
-import { getUserDetails } from '../actions/userActions'
+import { getUserDetails, updateUser } from '../actions/userActions'
+import { USER_UPDATE_RESET } from '../constants/userConstants'
 
 const UserEditScreen = ({ match, history }) => {
   const userId = match.params.id
 
   const userDetails = useSelector((state) => state.userDetails)
+  const userUpdate = useSelector((state) => state.userUpdate)
 
   const { loading, error, user } = userDetails
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -21,17 +28,23 @@ const UserEditScreen = ({ match, history }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    if (!user.name || user._id !== userId) {
-      dispatch(getUserDetails(userId))
+    if (successUpdate) {
+      dispatch({ type: USER_UPDATE_RESET })
+      history.push('/admin/userlist')
     } else {
-      setName(user.name)
-      setEmail(user.email)
-      setIsAdmin(user.isAdmin)
+      if (!user.name || user._id !== userId) {
+        dispatch(getUserDetails(userId))
+      } else {
+        setName(user.name)
+        setEmail(user.email)
+        setIsAdmin(user.isAdmin)
+      }
     }
-  }, [user, userId, dispatch])
+  }, [user, userId, dispatch, successUpdate, history])
 
   const submitHandler = (event) => {
     event.preventDefault()
+    dispatch(updateUser(userId))
   }
 
   return (
