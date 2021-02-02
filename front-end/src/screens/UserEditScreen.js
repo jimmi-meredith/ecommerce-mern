@@ -20,7 +20,15 @@ const UserEditScreen = ({ match, history }) => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    if (!user.name || user._id !== userId) {
+      dispatch(getUserDetails(userId))
+    } else {
+      setName(user.name)
+      setEmail(user.email)
+      setIsAdmin(user.isAdmin)
+    }
+  }, [user, userId, dispatch])
 
   const submitHandler = (event) => {
     event.preventDefault()
