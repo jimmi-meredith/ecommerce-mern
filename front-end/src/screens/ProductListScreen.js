@@ -29,14 +29,14 @@ const ProductListScreen = ({ match, history }) => {
     }
   }, [dispatch, userInfo, history, successDelete])
 
-  const createProductHandler = (product) => {
-    console.log('CREATE PRODUCT')
-  }
-
   const deleteHandler = (id) => {
     if (window.confirm('Are you sure?')) {
       dispatch(deleteProduct(id))
     }
+  }
+
+  const createProductHandler = (product) => {
+    console.log('CREATE PRODUCT')
   }
 
   return (
