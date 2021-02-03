@@ -1,5 +1,18 @@
 import mongoose from 'mongoose'
-import reviewSchema from './reviewModel.js'
+
+const reviewSchema = mongoose.Schema(
+  {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      requried: true,
+      ref: 'User',
+    },
+    name: { type: String, required: true },
+    rating: { type: Number, required: true },
+    comment: { type: String, required: true },
+  },
+  { timestamps: true }
+)
 
 const productSchema = mongoose.Schema(
   {
