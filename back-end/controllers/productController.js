@@ -51,22 +51,22 @@ const createProduct = asyncHandler(async (req, res) => {
 const updateProduct = asyncHandler(async (req, res) => {
   const {
     name,
+    price,
     image,
     brand,
+    countInStock,
     category,
     description,
-    price,
-    countInStock,
   } = req.body
   const product = await Product.findById(req.params.id)
   if (product) {
     product.name = name
+    product.price = price
     product.image = image
     product.brand = brand
+    product.countInStock = countInStock
     product.category = category
     product.description = description
-    product.price = price
-    product.countInStock = countInStock
     const updatedProduct = await product.save()
     res.status(201).json(updatedProduct)
   } else {
