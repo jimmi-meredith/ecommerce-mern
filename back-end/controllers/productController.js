@@ -87,6 +87,7 @@ const createProductReview = asyncHandler(async (req, res) => {
       res.status(400)
       throw new Error('Product already reviewed')
     }
+
     const review = {
       user: req.user._id,
       name: req.user.name,
@@ -97,7 +98,7 @@ const createProductReview = asyncHandler(async (req, res) => {
     product.numReviews = product.reviews.length
     product.rating =
       product.reviews.reduce((acc, item) => item.rating + acc, 0) /
-      product.reviews.lentgh
+      product.reviews.length
     await product.save()
     res.status(201).json({ message: 'Review added' })
   } else {
