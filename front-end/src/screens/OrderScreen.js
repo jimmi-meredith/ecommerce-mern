@@ -15,6 +15,7 @@ import {
   ORDER_PAY_RESET,
   ORDER_DELIVER_RESET,
 } from '../constants/orderConstants'
+import { CART_ITEMS_RESET } from '../constants/cartConstants'
 
 const OrderScreen = ({ match, history }) => {
   const orderDetails = useSelector((state) => state.orderDetails)
@@ -75,6 +76,7 @@ const OrderScreen = ({ match, history }) => {
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult))
+    dispatch({ type: CART_ITEMS_RESET })
   }
 
   const deliverHandler = () => {
