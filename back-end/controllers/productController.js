@@ -95,7 +95,6 @@ const createProductReview = asyncHandler(async (req, res) => {
       res.status(400)
       throw new Error('Product already reviewed')
     }
-
     const review = {
       user: req.user._id,
       name: req.user.name,
@@ -115,6 +114,12 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 })
 
+// GET - /api/products/top
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3)
+  res.json(products)
+})
+
 export {
   getProducts,
   getProductById,
@@ -122,4 +127,5 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
+  getTopProducts,
 }
