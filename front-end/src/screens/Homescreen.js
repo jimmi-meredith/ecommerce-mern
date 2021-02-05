@@ -8,6 +8,7 @@ import { listProducts } from '../actions/productActions'
 
 const Homescreen = ({ match }) => {
   const keyword = match.params.keyword
+  const pageNumber = match.params.pageNumber || 1
 
   const productList = useSelector((state) => state.productList)
 
@@ -16,8 +17,8 @@ const Homescreen = ({ match }) => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(listProducts(keyword))
-  }, [dispatch, keyword])
+    dispatch(listProducts(keyword, pageNumber))
+  }, [dispatch, keyword, pageNumber])
 
   return (
     <>
