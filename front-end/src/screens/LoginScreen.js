@@ -70,5 +70,4 @@ const LoginScreen = ({ location, history }) => {
   )
 }
 
-// Comment
 export default LoginScreen
